@@ -1,0 +1,44 @@
+﻿@model MVCjoin.Models.ClassList
+@using System.Data;
+@{
+    ViewBag.Title = "Listing";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<a href="@Url.Action("Index")" class="btn btn-primary">Add</a>
+@TempData["Add"]
+<br />
+@TempData["Delete"]
+<br />
+@TempData["Edit"]
+<br />
+<main>
+    <table class="table">
+        <thead>
+            <tr>
+                @foreach (DataColumn dc in Model.Ctable.Columns)
+                {
+                    <th scope="col">
+                        @dc.ColumnName
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dr in Model.Ctable.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn dc in Model.Ctable.Columns)
+                    {
+                        <th>
+                            @dr[dc.ColumnName]
+                        </th>
+                    }
+                    <td><a href="@Url.Action("Delete",new {Id = dr["ClassId"] })"> Delete </a></td>
+                    <td><a href="@Url.Action("Edit",new {Id = dr["ClassId"] })"> Edit </a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

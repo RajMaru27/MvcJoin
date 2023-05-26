@@ -1,0 +1,34 @@
+﻿@model MVCjoin.Models.SubjectList
+@using System.Data;
+@{
+    ViewBag.Title = "Avg";
+}
+
+<main>
+    <table class="table">
+        <thead>
+            <tr>
+                @foreach (DataColumn dc in Model.Stable.Columns)
+                {
+                    <td scope="col">
+                        @dc.ColumnName
+                    </td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dr in Model.Stable.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn dc in Model.Stable.Columns)
+                    {
+                        <td>
+                            @dr[dc.ColumnName]
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>
+

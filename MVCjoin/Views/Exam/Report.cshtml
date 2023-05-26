@@ -1,0 +1,35 @@
+﻿@model MVCjoin.Models.ExamList
+@using System.Data;
+@{
+    ViewBag.Title = "Report";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<main>
+    <table class="table">
+        <thead>
+            <tr>
+                @foreach (DataColumn dc in Model.etable.Columns)
+                {
+                    <td scope="col">
+                        @dc.ColumnName
+                    </td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dr in Model.etable.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn dc in Model.etable.Columns)
+                    {
+                        <td>
+                            @dr[dc.ColumnName]
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>
+

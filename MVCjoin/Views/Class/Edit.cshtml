@@ -1,0 +1,16 @@
+﻿@model MVCjoin.Models.ClassDetails
+@using System.Data;
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("Edit", "Class", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.ClassId)
+    <br />
+    @Html.LabelFor(x => x.Standard)
+    @Html.TextBoxFor(x => x.Standard)
+    <br />
+    <input type="submit"value="submit" />
+}
+

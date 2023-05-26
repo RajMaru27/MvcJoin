@@ -1,0 +1,16 @@
+﻿@model MVCjoin.Models.RegisterDetails
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@using (Html.BeginForm("AddForm", "Register", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.ClassId)
+    @Html.DropDownListFor(x => x.ClassId,Model.Classlist)
+    <br />
+    @Html.LabelFor(x => x.StudentId)
+    @Html.DropDownListFor(x => x.StudentId,Model.Studentlist)
+    <br />
+    <input type="submit"value="submit" />
+}

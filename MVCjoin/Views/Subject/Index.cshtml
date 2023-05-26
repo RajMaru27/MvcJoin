@@ -1,0 +1,14 @@
+﻿@model MVCjoin.Models.SubjectDetails
+@using System.Data;
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("AddForm", "Subject", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.SubjectName)
+    @Html.TextBoxFor(x => x.SubjectName)
+    <br />
+    <input type="submit"value="submit" />
+}
+

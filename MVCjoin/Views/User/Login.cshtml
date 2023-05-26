@@ -1,0 +1,29 @@
+﻿@model MVCjoin.Models.LoginDetails
+@using System.Data;
+@{
+    ViewBag.Title = "Login";
+}
+
+@TempData["Add"]
+<br />
+@TempData["NotMatch"]
+<br />
+@TempData["Reset"]
+<br />
+@using (Html.BeginForm("Submit", "User", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.UserName)
+    @Html.TextBoxFor(x => x.UserName)
+    <br />
+    @Html.LabelFor(x => x.Password)
+    @Html.PasswordFor(x => x.Password)
+    <br />
+    <input type="submit" value="Login" name="Login" />
+    <br />
+    <br />
+    <a href="@Url.Action("Reset")"> ForgotPassword </a>
+    <br />
+    <a href="@Url.Action("Index")"> Register New User </a>
+
+}
+

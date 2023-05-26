@@ -1,0 +1,46 @@
+﻿@model MVCjoin.Models.RegisterList
+@using System.Data;
+@{
+    ViewBag.Title = "Listing";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<a href="@Url.Action("Index")" class="btn btn-primary">Add</a>
+@TempData["Add"]
+<br />
+@TempData["Listing"]
+<br />
+@TempData["Edit"]
+<br />
+<main>
+    <table class="table">
+        <thead>
+            <tr>
+                @foreach (DataColumn dc in Model.Rtable.Columns)
+                {
+                    <td scope="col">
+                        @dc.ColumnName
+                    </td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dr in Model.Rtable.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn dc in Model.Rtable.Columns)
+                    {
+                        <td>
+                            @dr[dc.ColumnName]
+                        </td>
+                    }
+                    <td><a href="@Url.Action("Delete", new {Id = dr["RegisterId"] })"> Delete </a></td>
+                    <td><a href="@Url.Action("Edit", new {Id = dr["RegisterId"] })"> Edit </a></td>
+                    <td><a href="@Url.Action("Details", new {Id = dr["RegisterId"] })"> Details </a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>
+

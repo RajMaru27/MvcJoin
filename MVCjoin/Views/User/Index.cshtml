@@ -1,0 +1,31 @@
+﻿@model MVCjoin.Models.UserDetails
+@using System.Data;
+@{
+    ViewBag.Title = "Index";
+}
+
+@TempData["Insert"]
+<br />
+@TempData["NotMatch"]
+<br />
+@using (Html.BeginForm("AddForm", "User", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.UserId)
+    <br />
+    @Html.LabelFor(x => x.UserName)
+    @Html.TextBoxFor(x => x.UserName)
+    @TempData["Taken"]
+    <br />
+    @Html.LabelFor(x => x.Password)
+    @Html.PasswordFor(x => x.Password)
+    <br />
+    @Html.LabelFor(x => x.ConfirmPassword)
+    @Html.PasswordFor(x => x.ConfirmPassword)
+    <br />
+    <input type="submit" value="submit" />
+    <br />
+    <br />
+    <a href="@Url.Action("Login")"> Login </a>
+   
+}
+

@@ -1,0 +1,44 @@
+﻿@model MVCjoin.Models.ExamList
+@using System.Data;
+@{
+    ViewBag.Title = "Listing";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<a href="@Url.Action("Index")" class="btn btn-primary">Add</a>
+@TempData["Add"]
+<br />
+@TempData["Delete"]
+<br />
+@TempData["Edit"]
+<br />
+<main>
+    <table class="table">
+        <thead>
+            <tr>
+                @foreach (DataColumn dc in Model.etable.Columns)
+                {
+                    <td scope="col">
+                        @dc.ColumnName
+                    </td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dr in Model.etable.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn dc in Model.etable.Columns)
+                    {
+                        <td>
+                            @dr[dc.ColumnName]
+                        </td>
+                    }
+                    <td><a href="@Url.Action("Delete", new {Id = dr["ExamId"] })"> Delete </a></td>
+                    <td><a href="@Url.Action("Edit", new {Id = dr["ExamId"] })"> Edit </a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

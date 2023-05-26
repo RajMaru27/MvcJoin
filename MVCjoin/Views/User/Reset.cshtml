@@ -1,0 +1,20 @@
+﻿@model MVCjoin.Models.PasswordReset
+@using System.Data;
+@{
+    ViewBag.Title = "Reset";
+}
+
+@using (Html.BeginForm("ResetForm", "User", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.UserName)
+    @Html.TextBoxFor(x => x.UserName)
+    <br />
+    @Html.LabelFor(x => x.Password)
+    @Html.PasswordFor(x => x.Password)
+    <br />
+    @Html.LabelFor(x => x.ConfirmPassword)
+    @Html.PasswordFor(x => x.ConfirmPassword)
+    <br />
+    <input type="submit" value="Reset" name="Reset" />
+}
+

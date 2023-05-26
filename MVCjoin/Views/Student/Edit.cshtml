@@ -1,0 +1,21 @@
+﻿@model MVCjoin.Models.StudentDetails
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+@using (Html.BeginForm("Edit", "Student", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.StudentId)
+    <br />
+    @Html.LabelFor(x => x.StudentName)
+    @Html.TextBoxFor(x => x.StudentName)
+    <br />
+    @Html.LabelFor(x => x.Email)
+    @Html.TextBoxFor(x => x.Email)
+    <br />
+    @Html.LabelFor(x => x.Birthdate)
+    @Html.TextBoxFor(x => x.Birthdate)
+    <br />
+    <input type="submit"value="submit" />
+}

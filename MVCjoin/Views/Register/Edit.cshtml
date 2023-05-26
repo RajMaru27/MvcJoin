@@ -1,0 +1,19 @@
+﻿@model MVCjoin.Models.RegisterDetails
+@using System.Data;
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("Edit","Register",FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.RegisterId)
+    <br />
+    @Html.LabelFor(x => x.ClassId)
+    @Html.DropDownListFor(x => x.ClassId,Model.Classlist)
+    <br />
+    @Html.LabelFor(x => x.StudentId)
+    @Html.DropDownListFor(x => x.StudentId,Model.Studentlist)
+    <br />
+    <input type="submit"value="submit" />
+}
+
